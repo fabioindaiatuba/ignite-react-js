@@ -1,0 +1,28 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de sistema",
+      "type": "income",
+      "category": "Venda",
+      "price": 12345,
+      "createdAt": "2022-09-29T14:35:16.738Z"
+    },
+    {
+      "id": 2,
+      "description": "Gastos com ref",
+      "type": "outcome",
+      "category": "Comida",
+      "price": 45,
+      "createdAt": "2022-09-29T11:35:16.738Z"
+    },
+    {
+      "id": 3,
+      "description": "Curso",
+      "type": "outcome",
+      "category": "Educação",
+      "price": 1250,
+      "createdAt": "2022-09-29T14:50:16.738Z"
+    }
+  ]
+}
