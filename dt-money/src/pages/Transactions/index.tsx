@@ -1,17 +1,19 @@
-import { useContext, useEffect, useState } from "react";
-import { Header } from "../../components/Header";
-import { Summary } from "../../components/Summary";
-import { TransactionsContext } from "../../contexts/TransactionsContex";
-import { dateFormatter, priceFormatter } from "../../utils/formatter";
-import { SearchForm } from "./SearchForm";
+import { useContextSelector } from 'use-context-selector'
+import { Header } from '../../components/Header'
+import { Summary } from '../../components/Summary'
+import { TransactionsContext } from '../../contexts/TransactionsContex'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
+import { SearchForm } from './SearchForm'
 import {
   PriceHighLight,
   TransactionsContainer,
   TransactionsTable,
-} from "./styles";
+} from './styles'
 
 export function Transactions() {
-  const { transactions } = useContext(TransactionsContext);
+  const transactions = useContextSelector(TransactionsContext, (context) => {
+    return context.transactions
+  })
   return (
     <div>
       <Header />
@@ -24,10 +26,10 @@ export function Transactions() {
             {transactions.map((transaction) => {
               return (
                 <tr key={transaction.id}>
-                  <td width="50%">{transaction.description}</td>
-                  <td align="right">
+                  <td width='50%'>{transaction.description}</td>
+                  <td align='right'>
                     <PriceHighLight variant={transaction.type}>
-                      {transaction.type === "outcome" && "- "}
+                      {transaction.type === 'outcome' && '- '}
                       {priceFormatter.format(transaction.price)}
                     </PriceHighLight>
                   </td>
@@ -36,11 +38,11 @@ export function Transactions() {
                     {dateFormatter.format(new Date(transaction.createdAt))}
                   </td>
                 </tr>
-              );
+              )
             })}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
     </div>
-  );
+  )
 }
